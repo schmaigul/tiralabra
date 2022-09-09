@@ -22,10 +22,14 @@ Minimax + Alpha-beta pruning:
 - Tilavaativuus: O(bd)
 
 Lähteinä esimerkiksi:
+
 https://en.wikipedia.org/wiki/Minimax
+
 https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
+
 https://medium.com/analytics-vidhya/artificial-intelligence-at-play-connect-four-minimax-algorithm-explained-3b5fc32e4a4f
 
 
 Opinto ohjelma: Bachelor's in science
+
 Kieli: Suomi
