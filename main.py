@@ -21,8 +21,6 @@ def play_connect_four(board):
     turn_texts = ["Red's turn", "Blue's turn"]
     turn_colors = [RED, BLUE]
     rows, columns = board.get_dimensions()
-    size = rows*columns
-    play_counter = 0
     
     #Setting up the game window
     window = pygame.display.set_mode(size = (700, 700))
@@ -47,37 +45,36 @@ def play_connect_four(board):
 
                 if (board.check_valid(playerPosition)):
                     board.place_disc(playerPosition, turn)  
-                    play_counter += 1
                 else:
                     print('Not a valid position, choose a new one')
-                
+                    break
                 #Swithes turn of the player between 1 and 2
-                if (board.check_win(turn)):
+                if board.check_draw():
+                    game_not_over = False
+                    text = font.render('Draw!', True, (255,255,255))
+
+                if board.check_win(turn):
                     game_not_over = False
 
                     if (turn == 1):
                         text = font.render('Red wins!', True, turn_colors[turn-1])
                     if (turn == 2):
                         text =  font.render('Blue wins!', True, turn_colors[turn-1])
-                #Game is draw if the play counter is columns*rows = size
-                if (play_counter == size):
-                    text = font.render('Draw!', True, (255,255,255))
-                    game_not_over = False
 
-                else: 
-                    #Indexing is done such that it chooses the next one before the actual turn is changed
-                    text = font.render(turn_texts[turn%2], True, turn_colors[turn%2])
+                #Game is draw if there are no 0's in the array
+                if (not board.check_win(turn) and not board.check_draw()): 
+                    #If not end state, change turn
+                    turn %= 2
+                    turn += 1
+                    text = font.render(turn_texts[turn-1], True, turn_colors[turn-1])
 
                 board.draw(window)
                 window.blit(text, dest = (250, 40))
                 pygame.display.update()
 
                 #Delay the window if the game has ended
-                if not game_not_over or play_counter == size:
-                    pygame.time.delay(3000)
-
-                turn %= 2
-                turn += 1
+                if not game_not_over:
+                    pygame.time.wait(4000)
 
 if __name__ == '__main__':
     pygame.init()

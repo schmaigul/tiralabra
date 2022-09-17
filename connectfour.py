@@ -1,6 +1,5 @@
 import numpy as np
 import pygame
-import constants
 
 OFF_WHITE = (248, 240, 227)
 BLACK = (24,25,28)
@@ -62,6 +61,9 @@ class ConnectFour:
         return False
 
     
+    def check_draw(self):
+        return 0 not in self.board
+    
     def check_win(self, turn):
         """
         Method for checking if there is a winning condition on the current board
@@ -94,5 +96,3 @@ class ConnectFour:
                     return True
 
         return False
-
-        
