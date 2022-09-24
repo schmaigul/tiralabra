@@ -1,4 +1,4 @@
-### Testaa toimivuus juuressa komennolla:
+### Testaa toimivuus juuressa komennolla (Windows 10):
  python -m unittest -v test.test_minimax
 
 ## Testiraportti:
