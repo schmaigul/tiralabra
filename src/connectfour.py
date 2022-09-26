@@ -80,7 +80,7 @@ class ConnectFour:
         turn = self.turn
         #Horizontal
         for row in range(self.rows-1, -1, -1):
-            for col in range(self.columns-1):
+            for col in range(self.columns-3):
                 if self.board[row][col] == turn and self.board[row][col+1] == turn and self.board[row][col+2] == turn and self.board[row][col+3] == turn:
                     return True
 

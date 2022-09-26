@@ -49,10 +49,20 @@ class AIConnectFour(ConnectFour):
         if window.count(turn) == 4:
             value += 50
         #If there are 3 own discs and one empty
-        if window.count(turn) == 3 and window.count(0) == 0:
+        if window.count(turn) == 3 and window.count(0) == 1:
             value += 10
         if window.count(turn) == 2 and window.count(0) == 2:
             value += 5
+        
+
+        opponent = turn%2+1
+        if window.count(opponent) == 4:
+            value -= 50
+        #If there are 3 own discs and one empty
+        if window.count(opponent) == 3 and window.count(0) == 1:
+            value -= 10
+        if window.count(opponent) == 2 and window.count(0) == 2:
+            value -= 5
 
         return value
 
