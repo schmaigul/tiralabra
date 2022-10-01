@@ -1,7 +1,8 @@
 import unittest
 import io
 import sys
-from src.minimax import AIConnectFour
+from utils.ai_logic import *
+from utils.board_logic import *
 import numpy as np
 
 class MinimaxTest(unittest.TestCase):
@@ -13,8 +14,8 @@ class MinimaxTest(unittest.TestCase):
                             [0,0,0,1,0,0,0],
                             [0,0,0,0,0,0,0],
                             [0,0,0,0,0,0,0]]
-        board = AIConnectFour(np.array(diagonal_top_left), 1)
-        self.assertEqual(1, board.check_win(), msg = f'Wrong deduction of winning condition for the board \n{board}')
+        board = np.array(diagonal_top_left)
+        self.assertEqual(1, check_win(board, 1), msg = f'Wrong deduction of winning condition for the board \n{board}')
 
         diagonal_bottom_right = [[0,0,0,0,0,0,0],
                                 [0,0,0,0,0,0,0],
@@ -22,8 +23,8 @@ class MinimaxTest(unittest.TestCase):
                                 [0,0,0,0,1,0,0],
                                 [0,0,0,0,0,1,0],
                                 [0,0,0,0,0,0,1]]
-        board =AIConnectFour(np.array(diagonal_bottom_right),1)
-        self.assertEqual(1, board.check_win(), msg = f'Wrong deduction on winning condition for the board \n{board}')
+        board = np.array(diagonal_bottom_right)
+        self.assertEqual(1, check_win(board, 1), msg = f'Wrong deduction on winning condition for the board \n{board}')
 
         diagonal_top_right = [[0,0,0,0,0,0,1],
                               [0,0,0,0,0,1,0],
@@ -31,8 +32,8 @@ class MinimaxTest(unittest.TestCase):
                               [0,0,0,1,0,0,0],
                               [0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0]]
-        board = AIConnectFour(np.array(diagonal_top_right),1)
-        self.assertEqual(1, board.check_win(), msg = f'Wrong deduction on winning condition for the board \n{board}')
+        board =np.array(diagonal_top_right)
+        self.assertEqual(1, check_win(board, 1), msg = f'Wrong deduction on winning condition for the board \n{board}')
 
         diagonal_bottom_left = [[0,0,0,0,0,0,0],
                                 [0,0,0,0,0,0,0],
@@ -40,8 +41,8 @@ class MinimaxTest(unittest.TestCase):
                                 [0,0,1,0,0,0,0],
                                 [0,1,0,0,0,0,0],
                                 [1,0,0,0,0,0,0]]
-        board = AIConnectFour(np.array(diagonal_bottom_left),1)
-        self.assertEqual(1, board.check_win(), msg = f'Wrong deduction on winning condition for the board \n{board}')
+        board = np.array(diagonal_bottom_left)
+        self.assertEqual(1, check_win(board, 1), msg = f'Wrong deduction on winning condition for the board \n{board}')
         
         
         
@@ -51,8 +52,8 @@ class MinimaxTest(unittest.TestCase):
                             [0,0,0,0,0,0,0],
                             [0,0,0,0,0,0,0],
                             [1,1,1,1,0,0,0]]
-        board = AIConnectFour(np.array(horizontal_bottom),1)
-        self.assertEqual(1, board.check_win(), msg = f'Wrong deduction on winning condition for the board \n{board}')
+        board = np.array(horizontal_bottom)
+        self.assertEqual(1, check_win(board, 1), msg = f'Wrong deduction on winning condition for the board \n{board}')
         
         horizontal_top = [[0,0,0,1,1,1,1],
                           [0,0,0,0,0,0,0],
@@ -60,8 +61,8 @@ class MinimaxTest(unittest.TestCase):
                           [0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0]]
-        board = AIConnectFour(np.array(horizontal_top),1)
-        self.assertEqual(1, board.check_win(), msg = f'Wrong deduction on winning condition for the board \n{board}')
+        board = np.array(horizontal_top)
+        self.assertEqual(1, check_win(board, 1), msg = f'Wrong deduction on winning condition for the board \n{board}')
 
         vertical_left = [[1,0,0,0,0,0,0],
                          [1,0,0,0,0,0,0],
@@ -69,8 +70,8 @@ class MinimaxTest(unittest.TestCase):
                          [1,0,0,0,0,0,0],
                          [0,0,0,0,0,0,0],
                          [0,0,0,0,0,0,0]]
-        board = AIConnectFour(np.array(vertical_left),1)
-        self.assertEqual(1, board.check_win(), msg = f'Wrong deduction on winning condition for the board \n{board}')
+        board = np.array(vertical_left)
+        self.assertEqual(1, check_win(board, 1), msg = f'Wrong deduction on winning condition for the board \n{board}')
 
         vertical_right = [[0,0,0,0,0,0,0],
                           [0,0,0,0,0,0,0],
@@ -78,12 +79,12 @@ class MinimaxTest(unittest.TestCase):
                           [0,0,0,0,0,0,1],
                           [0,0,0,0,0,0,1],
                           [0,0,0,0,0,0,1]]
-        board = AIConnectFour(np.array(vertical_right),1)
-        self.assertEqual(1, board.check_win(), msg = f'Wrong deduction on winning condition for the board \n{board}')
+        board = np.array(vertical_right)
+        self.assertEqual(1, check_win(board, 1), msg = f'Wrong deduction on winning condition for the board \n{board}')
 
     def test_change_turn(self):
-        board = AIConnectFour((np.zeros((6,7), int)), 1)
-        self.assertEqual(2, board.change_turn())
+        board = np.zeros((6,7), int)
+        self.assertEqual(2, change_turn(1))
 
     def test_draw(self):
         draw_board = [[1,2,1,2,1,2,1],
@@ -92,8 +93,8 @@ class MinimaxTest(unittest.TestCase):
                 [2,1,2,1,2,1,2],
                 [1,2,1,2,1,2,1],
                 [2,1,2,1,2,1,2]]
-        game = AIConnectFour(np.array(draw_board), 2)
-        self.assertEqual(1, game.check_draw())
+        board = np.array(draw_board)
+        self.assertEqual(1, check_draw(board))
 
         not_draw = [[1,0,1,2,1,2,1],
                 [2,1,2,1,2,1,2],
@@ -101,8 +102,8 @@ class MinimaxTest(unittest.TestCase):
                 [2,1,2,1,2,1,2],
                 [1,2,1,2,1,2,1],
                 [2,1,2,1,2,1,2]]
-        game = AIConnectFour(np.array(not_draw),2)
-        self.assertEqual(0, game.check_draw())
+        game = np.array(not_draw)
+        self.assertEqual(1, check_draw(board))
 
     def test_children(self):
         board = [[1,0,1,0,1,0,1],
@@ -112,16 +113,27 @@ class MinimaxTest(unittest.TestCase):
                 [1,2,1,2,1,2,1],
                 [2,1,2,1,2,1,2]]
 
-        game = AIConnectFour(np.array(board), 2)
-        children = game.make_children()
-        for child in children:
-            self.assertEqual(child[0].get_turn(),1)
+        game = np.array(board)
+        children = make_children(game)
+      
+        self.assertEqual(children, [3,5,1])
 
-        testboard = [[1,2,1,0,1,0,1],
+        testboard = [[1,2,1,2,1,2,1],
                 [2,1,2,1,2,1,2],
                 [1,2,1,2,1,2,1],
                 [2,1,2,1,2,1,2],
                 [1,2,1,2,1,2,1],
                 [2,1,2,1,2,1,2]]
-                
-        self.assertEqual((children[0][0].get_board() == np.array(testboard)).all(), 1)
+        
+        children = make_children(np.array(testboard))
+        self.assertEqual(children, [])
+
+    def test_minimax(self):
+        testboard = [[0,0,0,0,0,0,0],
+                          [0,0,0,0,0,0,0],
+                          [0,0,0,0,0,0,1],
+                          [0,0,0,0,0,0,1],
+                          [0,0,0,0,0,0,1],
+                          [0,0,0,0,0,0,1]]
+
+        value, pos = minimizing(testboard, 2, -9999999, 9999999, 1)
