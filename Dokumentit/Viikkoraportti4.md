@@ -7,3 +7,5 @@ Haluaisin tietää, onko joku tällä kurssilla toteuttanut syventävää iteroi
 Olen myös testaillut bottia antaen ystävieni pelata sitä vastaan. Botti voittaa noin 9/10 ottelua. Nämä voitot tapahtuvat aina vasta pelin lopussa, kun vapaita paikkoja on jäljellä vain muutamia. Tämä ilmiö johtuu siitä, että botti ei pysty ennakoimaan niin pitkälle tulevaisuuteen, kunnes on jo liian myöhäistä.
 
 En kerennyt luoda enempää testejä ennen palautusta, mutta ensi viikolla hoidan nuo kaikki dokumentoinnnit pois alta ennen kuin yritän parantaa botin suorituskykyä.
+
+Aikaa käytetty tällä viikolla noin 15h
