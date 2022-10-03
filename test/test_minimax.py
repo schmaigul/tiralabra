@@ -5,6 +5,9 @@ from utils.ai_logic import *
 from utils.board_logic import *
 import numpy as np
 
+BIG_NEGATIVE = -99999999
+BIG_POSITIVE = 99999999
+
 class MinimaxTest(unittest.TestCase):
 
     def test_winning(self):
@@ -52,6 +55,15 @@ class MinimaxTest(unittest.TestCase):
                             [0,0,0,0,0,0,0],
                             [0,0,0,0,0,0,0],
                             [1,1,1,1,0,0,0]]
+        board = np.array(horizontal_bottom)
+        self.assertEqual(1, check_win(board, 1), msg = f'Wrong deduction on winning condition for the board \n{board}')
+
+        horizontal_bottom = [[0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0],
+                            [0,0,0,1,1,1,1]]
         board = np.array(horizontal_bottom)
         self.assertEqual(1, check_win(board, 1), msg = f'Wrong deduction on winning condition for the board \n{board}')
         
@@ -116,7 +128,7 @@ class MinimaxTest(unittest.TestCase):
         game = np.array(board)
         children = make_children(game)
       
-        self.assertEqual(children, [3,5,1])
+        self.assertEqual(True, all(x in [3,5,1] for x in children))
 
         testboard = [[1,2,1,2,1,2,1],
                 [2,1,2,1,2,1,2],
@@ -128,12 +140,56 @@ class MinimaxTest(unittest.TestCase):
         children = make_children(np.array(testboard))
         self.assertEqual(children, [])
 
-    def test_minimax(self):
-        testboard = [[0,0,0,0,0,0,0],
-                          [0,0,0,0,0,0,0],
-                          [0,0,0,0,0,0,1],
-                          [0,0,0,0,0,0,1],
-                          [0,0,0,0,0,0,1],
-                          [0,0,0,0,0,0,1]]
+    def test_ai(self):
 
-        value, pos = minimizing(testboard, 2, -9999999, 9999999, 1)
+        testboard = [[0,0,0,0,0,0,0],
+                     [0,0,0,0,0,0,0],
+                     [0,0,0,0,0,0,0],
+                     [0,0,0,0,0,0,0],
+                     [0,0,0,0,0,0,0],
+                     [1,2,1,1,1,0,0],]
+
+        winning_pos = iterative_deepening(np.array(testboard), 1, 2, True)
+
+        self.assertEqual(winning_pos, 5)
+
+        testboard = [[0,0,0,0,0,0,0],
+                     [0,0,0,0,0,0,0],
+                     [0,0,0,0,0,0,0],
+                     [0,0,1,0,0,0,0],
+                     [0,1,0,0,0,0,0],
+                     [1,2,2,1,1,1,0]]
+
+        winning_pos = iterative_deepening(np.array(testboard), 1, 2, True)
+
+        self.assertEqual(winning_pos, 6)
+
+    def test_evaluation(self):
+        
+        self.assertEqual(50, evaluate_position(1, [1,1,1,1]))
+        self.assertEqual(-50, evaluate_position(2, [1,1,1,1]))
+        self.assertEqual(5, evaluate_position(1, [1,0,1,0]))
+        self.assertEqual(-5, evaluate_position(2, [1,0,1,0]))
+        self.assertEqual(10, evaluate_position(1, [1,0,1,1]))
+        self.assertEqual(-10, evaluate_position(2, [1,1,0,1]))
+
+    def test_score(self):
+
+        testboard = [[0,0,0,0,0,0,0],
+                     [0,0,0,0,0,0,0],
+                     [0,0,0,0,0,0,0],
+                     [2,1,2,0,1,2,1],
+                     [2,1,2,0,1,2,1],
+                     [1,1,1,0,2,2,2]]
+
+        self.assertEqual(scores(np.array(testboard), 1), 0)
+
+        testboard = [[0,0,0,0,0,0,0],
+                     [0,0,0,0,0,0,0],
+                     [0,0,0,0,0,0,0],
+                     [2,1,2,0,1,2,1],
+                     [2,1,2,1,1,2,1],
+                     [1,1,1,1,2,2,2]]
+
+        self.assertEqual(scores(np.array(testboard), 1), 50+10+5+6)
+        

@@ -1,10 +1,15 @@
+from distutils.util import change_root
 import numpy as np
+from sympy import Ne
 from utils.board_logic import *
 import random
 
 
 BIG_NEGATIVE = -99999999
 BIG_POSITIVE = 99999999
+
+HUMAN = 1
+AI = 2
 
 ROWS = 6
 COLUMNS = 7
@@ -136,6 +141,7 @@ def maximizing(board, turn, alpha, beta, depth):
 
             board, row = place_disc(board, board.shape[0], position, turn)
             turn = change_turn(turn)
+
             new_score, new_position = minimizing(board, turn, alpha, beta, depth-1)
             
             turn = change_turn(turn)
@@ -183,6 +189,7 @@ def minimizing(board, turn, alpha, beta, depth):
         if new_score < value:
             value = new_score
             chosen_position = position
+
         if value <= alpha:
             break
         beta = min(beta, value)
@@ -194,14 +201,51 @@ def iterative_deepening(board, turn, depth, isMax):
     '''
     Iterative deepening still work in progress
     '''
-    #Initialize the score table
+
+    #Initiation, scores is a dictionary with children as the key and corresponding score initated at 0
     children = make_children(board)
     chosen_position = children[0]
+    scores = dict.fromkeys(children, BIG_NEGATIVE)
 
+    #iterate from 0 to depth
     if (isMax):
-        for current_depth in range(depth):
+        for current_depth in range(1, depth, 1):
+
+            #Emulate max algorithm but sort children after each iteration
+
+            alpha = BIG_NEGATIVE
+            beta = BIG_POSITIVE
+
+            best_score = BIG_NEGATIVE
+
+            for pos in children:
+                
+                #Place a disc on the board and change current turn
+                board, row = place_disc(board, board.shape[0], pos, turn)
+                turn = change_turn(turn)
             
-            new_score, chosen_position = maximizing(board, turn, BIG_NEGATIVE, BIG_POSITIVE, current_depth)
-    
+                new_score, new_position = minimizing(board, turn, alpha, beta, current_depth)
+
+                #Pick max score for sorting later
+                scores[pos] = max(scores[pos], new_score)
+
+                #Revert previous board actions
+                board[row][pos] =  0
+                turn = change_turn(turn)
+
+                #Always pick best score to be max from all children
+                if (new_score > best_score):
+                    best_score = new_score
+                    chosen_position = pos
+
+                #Max pruning
+                if best_score >= beta:
+                    break
+                
+                alpha = max(alpha, best_score)
+
+            #Sort children in descending order and use this order in the next iteration, to hopefully prune early on
+            children = sorted(children, key=lambda x: scores[x], reverse = True)
+
     return chosen_position
 

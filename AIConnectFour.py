@@ -42,6 +42,7 @@ def play_connect_four(board, turn):
                 pygame.quit()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
+
                 #The chosen column is horizontal mouse int(position/SQUARE_SIZE)
                 if (turn == HUMAN):
                     
@@ -105,6 +106,7 @@ def play_connect_four(board, turn):
             pygame.time.wait(4000)
 
 if __name__ == '__main__':
+    #Start the game
     pygame.init()
     while (True):
         board = np.zeros((6,7), int)
