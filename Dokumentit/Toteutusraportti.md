@@ -18,3 +18,14 @@ Joka tasolla talletetaan yksi arvo jokaista laillista lapsisolmua kohtaan, joten
 ## Puutteet ja parannusehdotukset
 
 Projektia olisi mahdollista parantaa vaikka kuinka monella tavalla, kuten välimuistilla ja alpha-beta ikkunoiden optimoimisella. Halusin oikeastaan toteuttaa nämä kaikki ominaisuudet, mutta se olisi ollut itselleni liian haastavaa ja olisi vienyt liikaa aikaa. Pisteytysmetodia voisi muuttaa paremmaksi, painottaen myöskin syvyyttä pisteiden arvioimisessa. Mitä syvemmälle pelipuu on mennyt, sitä epätodennäköisempää on sen esiintyä pelin aikana. Pienet syvyydet voisivat antaa enemmän pisteitä iteratiivisessa syvenemisessä, jolloin karsintaakin koituisi enemmän, ja tekoöäly painottaisi nopeaa ja varmaa voittoa. Välimuistia voisi käyttää aikaisempien pelitilojen arvojen tallettamiseen, jolloin tulevat pelitilat olisi helppo tarkistaa muistista, ja mahdollisesti palauttaa välittömästi jokin arvo. 
+
+# Lähteet:
+
+https://en.wikipedia.org/wiki/Iterative_deepening_depth-first_search
+
+https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
+
+https://medium.com/analytics-vidhya/artificial-intelligence-at-play-connect-four-minimax-algorithm-explained-3b5fc32e4a4f
+
+
+
