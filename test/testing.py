@@ -3,14 +3,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-from board_logic import *
-from ai_logic import *
+from utils.ai_logic import *
 
 '''
 Program to draw a graph for performance tests
 '''
 def loopminimax(testboard, turn):
     times = []
+
     for i in range(11):
         startTime = time.time()
         maximizing(testboard, turn, BIG_NEGATIVE, BIG_POSITIVE, i)
@@ -47,6 +47,7 @@ testboard = [[0,0,0,0,0,0,0],
 
 times_winning = loopminimax(np.array(testboard), 2)
 
+depths = [i for i in range(11)]
 
 plt.plot(depths, times_empty, '-b', label='Empty board')
 plt.plot(depths, times_losing, '-r', label='Losing board')

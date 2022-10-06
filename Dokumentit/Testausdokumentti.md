@@ -23,6 +23,8 @@ OK
 
 Alla olevassa kaaviossa näkyy miten nopeasti minimax alpha-beta pruning-algoritmi toimii eri pelitilanteissa. Kuten huomataan, tyhjän pelilaudan ja häviämistilanteen arvioimisessa menee erittäin kauan, vaikka haluaisimme häviämistilanteen tunnistettavan välittömästi. Tämä johtuu algoritmin luonteesta. Sen hetkinen pelaaja pyrkii aina maksimoimaan/minimoimaan pisteensä riippuen kumpi pelaaja on pelaamassa. Samalla toinen pelaaja pyrkii vastakkaisesti minimoimaan/maksimoimaan pisteensä puun alemmalla tasolla. Vaikka häviön välttävä siirto löydettäisiin heti ensimmäisenä, ei algoritmi tunnista tätä parhaaksi vaihtoehdoksi koska se ei lähes ikinä anna hyviä pisteitä. Tästä syystä algoritmi käy lähes kaikki tasot läpi etsien parempaa tulosta kunnes, päätyy valitsemaan huonon pisteiden minimoivan siirron; häviön välttämisen. Pruningia tapahtuu joka tapauksessa etenkin suuremmissa syvyyksissä, kun peli on edennyt pidemmälle ja voittotilanteet ovat havaittu.
 
+### Suorita alla oleva kaavio komennolla:
+python -m test.testing
 
 ![image](../pics/MinimaxPerformanceTest.png)
 
