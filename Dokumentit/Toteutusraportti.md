@@ -11,7 +11,7 @@ AI_logic ja Board_logic linkitetään AIConnectfour.py käyttöliittymään, jok
 
 Alla esimerkki käyttöliittymästä
 
-![image](../pics/AI_wins)
+![image](../pics/AI_wins.png)
 
 ## Aikavaativuudet
 
