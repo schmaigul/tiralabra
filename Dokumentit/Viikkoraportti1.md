@@ -1,4 +1,4 @@
-Vastaa kirjituksessa esimerkiksi seuraaviin kysymyksiin:
+Vastaa kirjoituksessa esimerkiksi seuraaviin kysymyksiin:
 
 Mitä olen tehnyt tällä viikolla?
 Miten ohjelma on edistynyt?
