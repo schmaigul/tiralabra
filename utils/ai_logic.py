@@ -1,4 +1,3 @@
-from distutils.util import change_root
 import numpy as np
 from sympy import Ne
 from utils.board_logic import *
@@ -170,6 +169,7 @@ def minimizing(board, turn, alpha, beta, depth):
         return (0, None)
 
     if (depth == 0):
+        #Return negative score
         return (scores(board, turn)*(-1), None)
 
     value = BIG_POSITIVE
@@ -199,7 +199,7 @@ def minimizing(board, turn, alpha, beta, depth):
 
 def iterative_deepening(board, turn, depth, isMax):
     '''
-    Iterative deepening still work in progress
+    Iterative deepening used for move ordering based on the best move found at previous depth to make alpha-beta pruning faster
     '''
 
     #Initiation, scores is a dictionary with children as the key and corresponding score initated at 0
@@ -207,9 +207,15 @@ def iterative_deepening(board, turn, depth, isMax):
     chosen_position = children[0]
     scores = dict.fromkeys(children, BIG_NEGATIVE)
 
+    # Detect if opponent has winning condition on the next move, and block it immidiately
+    block = block_lose(board, children, turn)
+    if (block != None):
+        return block
+
+    
     #iterate from 0 to depth
     if (isMax):
-        for current_depth in range(1, depth, 1):
+        for current_depth in range(0, depth, 1):
 
             #Emulate max algorithm but sort children after each iteration
 
@@ -249,3 +255,28 @@ def iterative_deepening(board, turn, depth, isMax):
 
     return chosen_position
 
+
+
+def block_lose(board, children, turn):
+    '''
+    Heuristic that runs before iterative deepening. Detects whether current player needs to block a losing condition immidiately which otherwise would take a lot of time for the alpha-beta pruning.
+    return: position if losing situation found, otherwise None.
+    '''
+    turn = change_turn(turn)
+
+    for pos in children:
+
+        board, row = place_disc(board, board.shape[0], pos, turn)
+        
+        if (check_win(board, turn)):
+
+            board[row][pos] =  0
+            turn = change_turn(turn)
+
+            return pos
+
+        board[row][pos] =  0
+    
+    turn = change_turn(turn)
+
+    return None
