@@ -1,0 +1,7 @@
+Aloitin viikon parantelemalla iteratiivista syvennystä. Nyt algoritmi järjestää lapsisolmut joka loopin jälkeen paremmuusjärjestykseen, mahdollisesti nopeuttamalla algoritmia neutraaleissa tilanteissa, joissa karsintaa tarvitaan eniten. Paransin algoritmia myös tunnistamaan nopeasti tilanteet, jossa seuraavalla vuorolla vastustaja voittaa. Aikaisemmin algoritmi joutui käymää lähes koko puun läpi ennen kuin päätyi estämään häviötilanteen, mutta nyt se tunnistaa sen lähes välittlömästi. Funktio vaihtaa nopeasti vuoron vastustajalle ja tarkistaa voittaisiko heti samalla pelilaudalla. Jos voittaa, palauttaa funktio tämän voittoliikkeen sijainnin, ja antaa botin valita sen. Muutoin botti suorittaa iteratiivisen syvennyksen normaalisti.
+
+Loin testausdokumenttiin kaavion algoritmin performanssista erinäisissä pelitilanteissa. Kaavio havainnollistaa hyvin minimaxing käyttäytymistä.
+
+Tämän jälkeen loin toteutusdokumentoinnin, joka on ihan hyvällä mallilla. Mitä sinne kannattaisi vielä lisätä? Olen myös hieman epävarma testausdokumentista, onko se tarpeeksi kattava. Pythonin unittest ei nimittäin anna kovin yksityiskohtaista raportointia. Parantelin myös tiedostorakennetta. Algoritmi taitaa olla nyt siinä vaiheessa, etten aio siihen enää mitään lisäillä, sillä se vastaa määrittelydokumentin vaatimuksia lisäten pari heuristiikkaa. 
+
+Aikaa käytetty noin 10h.
