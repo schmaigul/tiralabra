@@ -1,8 +1,8 @@
 Vaadittavat kirjastot: Pygame ja Numpy
 
-# Ohjeet Pygamen asennukseen: https://www.pygame.org/wiki/GettingStarted
+### Ohjeet Pygamen asennukseen: https://www.pygame.org/wiki/GettingStarted
 
-# Ohjeet numpyn asennukseen: https://numpy.org/install/
+### Ohjeet numpyn asennukseen: https://numpy.org/install/
 
 ## Pelaa tekoälylä vastaan komennolla:
 python AIConnectFour.py
