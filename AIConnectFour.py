@@ -4,7 +4,7 @@ import numpy as np
 from utils.board_logic import *
 from utils.ai_logic import *
 
-#Choose the number of columns and rows for the game
+#Constants for drawing the game and player number.
 OFF_WHITE = (248, 240, 227)
 BLACK = (24,25,28)
 SQUARE_SIZE = 100
@@ -30,8 +30,10 @@ def play_connect_four(board, turn):
     pygame.display.set_caption('Connect Four')
     font = pygame.font.Font('freesansbold.ttf', 32)
     draw_board(board, window)
+
     text = font.render(turn_texts[turn-1], True, turn_colors[turn-1])
     window.blit(text, dest = (250, 40))
+    
     pygame.display.update()
 
     #Game loop, players are 1 (red) and 2 (blue)

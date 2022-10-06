@@ -1,4 +1,4 @@
-### Testaa toimivuus juuressa komennolla (Windows 10):
+### Testaa toimivuus juuressa komennolla:
  python -m unittest -v test.test_minimax
 
 
@@ -26,4 +26,4 @@ Alla olevassa kaaviossa näkyy miten nopeasti minimax alpha-beta pruning-algorit
 
 ![image](../pics/MinimaxPerformanceTest.png)
 
-Alpha-beta pruning toimii erinomaisesti voittotilanteessa, jolloin kaikilla valitsemilla syvyyksillä menee sama aika, joka on lähes välitön.
+Kuvasta huomataan, että alpha-beta pruning toimii erinomaisesti voittotilanteessa, jolloin kaikilla valitsemilla syvyyksillä menee sama aika, joka on lähes välitön. Kaavion muut käyrät demonstroivat hyvin exponentiaalista kasvua syvyyden noustessa, niinkuin pitääkin.

@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-from .utils.board_logic import *
-from .utils.ai_logic import *
+from board_logic import *
+from ai_logic import *
 
 '''
 Program to draw a graph for performance tests

@@ -1,4 +1,6 @@
 
+# Toteutus
+
 Ohjelma koostuu päätiedostoista AIConnectfour, ConnectFour, ja utils-moduulista, jossa sijaitsee pelilogiikka.
 
 Board_logic sisältää pelilaudan logiikan, kuten voittotilanteen tarkistuksen, uuden pelinappulan asettaminen laudalle ja pelilaudan piirtäminen graafisesti ikkunaan. 
@@ -6,6 +8,10 @@ Board_logic sisältää pelilaudan logiikan, kuten voittotilanteen tarkistuksen,
 AI_logic käyttää monia board_logic tiedoston funktioita, muttei sekään ole luokka. Tämä metodeja täynnä oleva tiedosto sisältää tekoälyn logiikan, kuten pelitilanteen arvioinnin, minimax ja alpha beta-pruning algoritmit.
 
 AI_logic ja Board_logic linkitetään AIConnectfour.py käyttöliittymään, joka käynnistää pelin ja luo peli-ikkunan. Tämän jälkeen peli alkaa, kunnes toinen on voittanut. Peli alkaa alusta neljän sekunnin jälkeen päättymisestä.
+
+Alla esimerkki käyttöliittymästä
+
+![image](../pics/AI_wins)
 
 ## Aikavaativuudet
 

@@ -207,7 +207,7 @@ def iterative_deepening(board, turn, depth, isMax):
     chosen_position = children[0]
     scores = dict.fromkeys(children, BIG_NEGATIVE)
 
-    # Detect if opponent has winning condition on the next move, and block it immidiately
+    #Detect if opponent has winning condition on the next move, and block it immidiately
     block = block_lose(board, children, turn)
     if (block != None):
         return block
