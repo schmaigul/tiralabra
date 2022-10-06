@@ -1,7 +1,14 @@
 Vaadittavat kirjastot: Pygame ja Numpy
 
-## Connect Four-peli aloitetaan suorittamalla komento:
-python AIConnectFour
+# Ohjeet Pygamen asennukseen: https://www.pygame.org/wiki/GettingStarted
+
+# Ohjeet numpyn asennukseen: https://numpy.org/install/
+
+## Pelaa tekoälylä vastaan komennolla:
+python AIConnectFour.py
+
+## Pelaa kaksinpeliä komennolla:
+python ConnectFour.py
 
 ## Miten pelata
 
