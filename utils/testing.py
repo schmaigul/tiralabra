@@ -11,8 +11,6 @@ Program to draw a graph for performance tests
 '''
 def loopminimax(testboard, turn):
     times = []
-    depths = [i for i in range(11)]
-
     for i in range(11):
         startTime = time.time()
         maximizing(testboard, turn, BIG_NEGATIVE, BIG_POSITIVE, i)
@@ -30,7 +28,6 @@ empty_board = [[0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0]]
 
 times_empty = loopminimax(np.array(empty_board), 2)
-depths = [i for i in range(11)]
 
 testboard = [[0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0],
