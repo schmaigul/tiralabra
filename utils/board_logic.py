@@ -18,9 +18,9 @@ def draw_board(board, window):
         for col in range(columns):
             pygame.draw.rect(window, OFF_WHITE, (col*SQUARE_SIZE+2, row*SQUARE_SIZE+2+SQUARE_SIZE, SQUARE_SIZE-2, SQUARE_SIZE-2))
             if (board[row][col] == 1):
-                pygame.draw.circle(window, RED, (int(col*SQUARE_SIZE+SQUARE_SIZE/2+1), int(row*SQUARE_SIZE+SQUARE_SIZE/2+1 + SQUARE_SIZE)), SQUARE_SIZE/2-2)
+                pygame.draw.circle(window, RED, (int(col*SQUARE_SIZE+SQUARE_SIZE/2+1), int(row*SQUARE_SIZE+SQUARE_SIZE/2+1 + SQUARE_SIZE)), int(SQUARE_SIZE/2-2))
             if (board[row][col] == 2):
-                pygame.draw.circle(window, BLUE, (int(col*SQUARE_SIZE+SQUARE_SIZE/2+1), int(row*SQUARE_SIZE+SQUARE_SIZE/2+1 + SQUARE_SIZE)), SQUARE_SIZE/2-2)
+                pygame.draw.circle(window, BLUE, (int(col*SQUARE_SIZE+SQUARE_SIZE/2+1), int(row*SQUARE_SIZE+SQUARE_SIZE/2+1 + SQUARE_SIZE)), int(SQUARE_SIZE/2-2))
 
 def check_valid(board, col):
     """
