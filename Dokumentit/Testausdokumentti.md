@@ -9,14 +9,15 @@ Yksikkötestauksessa testasin pelilogiikan toimivuuden ja kaikki edge-caset. Nor
 > test_ai (test.test_minimax.MinimaxTest) ... ok
 > test_change_turn (test.test_minimax.MinimaxTest) ... ok
 > test_children (test.test_minimax.MinimaxTest) ... ok
+> test_detect_losing (test.test_minimax.MinimaxTest) ... ok
+> test_detect_winning (test.test_minimax.MinimaxTest) ... ok
 > test_draw (test.test_minimax.MinimaxTest) ... ok
 > test_evaluation (test.test_minimax.MinimaxTest) ... ok
 > test_score (test.test_minimax.MinimaxTest) ... ok
 > test_winning (test.test_minimax.MinimaxTest) ... ok
 > 
 > ----------------------------------------------------------------------
-> Ran 7 tests in 0.014s
-> 
+> Ran 9 tests in 5.994s
 > OK
 
 Testit kattavat kaikki metodit ja funktiot jotka vaativat testausta
