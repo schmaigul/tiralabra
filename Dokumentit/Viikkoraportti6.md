@@ -1,0 +1,1 @@
+Tein tekoälylle uusia testejä, joissa kokeilin tunnistaako se tilanteet, joissa se voittaa varmasti. Testasin myös tunnistaako tekoäly blokata häviämistilantees kahden siirron päähän. Osasihan se.
