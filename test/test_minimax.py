@@ -164,6 +164,56 @@ class MinimaxTest(unittest.TestCase):
 
         self.assertEqual(winning_pos, 6)
 
+    def test_detect_winning(self):
+        #Checks if AI fis able to detect guaranteed win in two turns
+        win2turns = np.array([[0,1,2,0,0,0,0],
+                                [0,0,2,1,0,0,0],
+                                [0,0,2,2,0,0,0],
+                                [0,0,2,1,0,2,1],
+                                [1,2,1,2,2,1,2],
+                                [1,1,2,1,1,1,2]])
+
+        position = iterative_deepening(win2turns, 2, 6, True)
+        win2turns, row = place_disc(win2turns, 6, position, 2)
+
+        position = iterative_deepening(win2turns, 1, 6, True)
+        win2turns, row = place_disc(win2turns, 6, position, 1)
+
+        position = iterative_deepening(win2turns, 2, 6, True)
+        win2turns, row = place_disc(win2turns, 6, position, 2)
+
+        self.assertEqual(check_win(win2turns, 2), True)
+
+    def test_detect_losing(self):
+        #Detect losing situations
+
+        avoidlosing = np.array([[0,0,0,0,0,0,0],
+                                [0,0,0,0,0,0,0],
+                                [0,0,0,0,0,0,0],
+                                [0,0,0,0,0,0,0],
+                                [0,0,0,2,0,0,0],
+                                [0,0,1,1,0,0,0]])
+
+        position = iterative_deepening(avoidlosing, 2 ,6, True)
+        
+        moves = [1,4]
+
+        self.assertEqual((position in moves), True)
+
+        #In this situation, player 2 must place their disc to the 3th column or else they will lose in the next round
+        avoidlosing = np.array([[0,0,0,0,0,0,0],
+                                [0,0,0,0,0,0,0],
+                                [0,0,0,0,0,0,0],
+                                [1,1,0,0,0,0,0],
+                                [2,1,2,0,0,1,0],
+                                [1,2,1,1,2,1,2]])
+
+        position = iterative_deepening(avoidlosing, 2, 6, True)
+
+        self.assertEqual(position, 2)
+
+
+
     def test_evaluation(self):
         
         self.assertEqual(50, evaluate_position(1, [1,1,1,1]))
