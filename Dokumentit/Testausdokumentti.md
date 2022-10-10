@@ -21,7 +21,7 @@ Yksikkötestauksessa testasin pelilogiikan toimivuuden ja kaikki edge-caset. Nor
 
 Testit kattavat kaikki metodit ja funktiot jotka vaativat testausta
 
-![image](..pics/CoverageReport.png)
+![image](../pics/CoverageReport.png)
 
 ## Suorituskykytestit kolmelle eri pelitilanteelle
 
