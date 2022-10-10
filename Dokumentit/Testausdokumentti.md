@@ -6,18 +6,22 @@
 
 Yksikkötestauksessa testasin pelilogiikan toimivuuden ja kaikki edge-caset. Normaalit pelin funktiot kuten laillisten pelipaikkojen määrittelemisen, pelinappulan pudottaminen, ja voittotilanteen tunnistaminen käytiin täsmällisesti läpi. Sen lisäksi testasin minimax-algoritmin oikeutta, ja tein testejä eri pelitilanteen määrittelemiseksi. Testaaminen onnistuu myös ihan peliä pelaamalla. Kaikki olennaiset metodit ja funktiot joille testien tekeminen on järkevää on testattu. Testejä itseään pääsee tarkistamaan test/test_minimax.py ohjelman koodista.
 
-test_ai (test.test_minimax.MinimaxTest) ... ok
-test_change_turn (test.test_minimax.MinimaxTest) ... ok
-test_children (test.test_minimax.MinimaxTest) ... ok
-test_draw (test.test_minimax.MinimaxTest) ... ok
-test_evaluation (test.test_minimax.MinimaxTest) ... ok
-test_score (test.test_minimax.MinimaxTest) ... ok
-test_winning (test.test_minimax.MinimaxTest) ... ok
+> test_ai (test.test_minimax.MinimaxTest) ... ok
+> test_change_turn (test.test_minimax.MinimaxTest) ... ok
+> test_children (test.test_minimax.MinimaxTest) ... ok
+> test_draw (test.test_minimax.MinimaxTest) ... ok
+> test_evaluation (test.test_minimax.MinimaxTest) ... ok
+> test_score (test.test_minimax.MinimaxTest) ... ok
+> test_winning (test.test_minimax.MinimaxTest) ... ok
+> 
+> ----------------------------------------------------------------------
+> Ran 7 tests in 0.014s
+> 
+> OK
 
-----------------------------------------------------------------------
-Ran 7 tests in 0.014s
+Testit kattavat kaikki metodit ja funktiot jotka vaativat testausta
 
-OK
+![image](..pics/CoverageReport.png)
 
 ## Suorituskykytestit kolmelle eri pelitilanteelle
 
