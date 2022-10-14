@@ -5,13 +5,23 @@ Ohjelma koostuu päätiedostoista AIConnectfour, ConnectFour, ja utils-moduulist
 
 Board_logic sisältää pelilaudan logiikan, kuten voittotilanteen tarkistuksen, uuden pelinappulan asettaminen laudalle ja pelilaudan piirtäminen graafisesti ikkunaan. 
 
-AI_logic käyttää monia board_logic tiedoston funktioita, muttei sekään ole luokka. Tämä metodeja täynnä oleva tiedosto sisältää tekoälyn logiikan, kuten pelitilanteen arvioinnin, minimax ja alpha beta-pruning algoritmit.
+AI_logic käyttää monia board_logic-tiedoston funktioita, muttei sekään ole luokka. Tämä metodeja täynnä oleva tiedosto sisältää tekoälyn logiikan, kuten pelitilanteen arvioinnin, minimax ja alpha beta-pruning algoritmit.
 
 AI_logic ja Board_logic linkitetään AIConnectfour.py käyttöliittymään, joka käynnistää pelin ja luo peli-ikkunan. Tämän jälkeen peli alkaa, kunnes toinen on voittanut. Peli alkaa alusta neljän sekunnin jälkeen päättymisestä.
 
 Alla esimerkki käyttöliittymästä
 
 ![image](../pics/AI_wins.png)
+
+# Botin toiminta
+
+Tekoäly käyttää alpha-beta pruning algoritmia, joka on edistyneempi versio minimax-algoritmista. Karsintaa on vielä paranneltu käyttäen iteratiivista syvenemistä, joka käytännössä tutkii hakupuun syvyyksiä kasvavilla syvyysrajoilla. 
+
+Ohjelmassani tekoäly pyrkii maksimoivan pisteensä. Maksimointi-funktio pyrkii löytämään eniten pisteitä antavan lapsisolmun. Lapsisolmut ovat kaikki pelilaudan seuraavat mahdolliset tilat, eli kaikki paikat, minne pelinappulan voi pudottaa laudalle. Lapsisolmujen generoimisen jälkeen vaihdetaan pelivuoro vastustajalle, ja kutsutaan minimoiva funktio, joka pyrkii keräämään pienimmät pisteet näiltä uusilta lapsisolmuilta. Jos jokin lapsisolmuista johtaa voittotilanteeseen, palautetaan erittäin suuri tai pieni arvo riippuen onko maksimoivan vai minivoivan vuoro. Jos kuitenkin päädytään hakupuun pohjalle, kutsutaan pisteytysfunktio, joka arvioi solmun pelitilanteen ja palauttaa sen.
+
+Pisteytysfunktio tarkistaa nykyisen pelaajan kuten myös vastustajan mahdollisuudet voittaa kyseisellä laudalla. Tämä perustuu funktion tarkistamaan niin sanottuja "ikkunoita" pelilaudalta. Ikkuna on neljän pituinen lista, joka on osajoukko pelilaudasta. Kaikki mahdolliset ikkunat generoidaan sen omalla funktiolla, jotka sitten annetaan pisteytysfunktiolle. Pisteitä annetaan, jos ikkunassa esiintyy vain omia pelinappuloita. Mitä enemmän omia pelinappuloita ikkunassa esiintyy, sitä enemmän pisteitä jaetaan. Pisteytysfunktio tarkistaa myös vastustajan pisteet, ja vähentää ne loppupisteytyksestä. 
+
+Lisäheuristiikkana toimii iteratiivinen syventäminen, jonka avulla alpha-beta karsintaa saadaan optimoitua järjestämällä lapsisolmujen pisteet parhaimmasta huonoimpaan joka silmukan jälkeen. Syvenenimen siis alkaa nollasta ja menee johonkin tiettyyn syvyyteen. 
 
 ## Aikavaativuudet
 
