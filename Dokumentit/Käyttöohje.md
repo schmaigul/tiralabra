@@ -18,4 +18,4 @@ Suorita komento **python AIConnectFour.py** pelataksesi tekoälyä vastaan, niin
 
 Jos haluat pelata kaveriasi vastaan, suorita komento **python ConnectFour.py**. Peli toimii samankaltaisesti, mutta nyt vuoron vaihtuessa on kaverisi vuoro pelata.
 
-![image](../pics/MinimaxPerformanceTest.png)
+![image](../pics/AI_wins.png)
