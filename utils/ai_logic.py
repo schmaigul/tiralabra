@@ -215,7 +215,7 @@ def iterative_deepening(board, turn, depth, isMax):
     
     #iterate from 0 to depth
     if (isMax):
-        for current_depth in range(0, depth, 1):
+        for current_depth in range(depth):
 
             #Emulate max algorithm but sort children after each iteration
 
@@ -238,6 +238,9 @@ def iterative_deepening(board, turn, depth, isMax):
                 #Revert previous board actions
                 board[row][pos] =  0
                 turn = change_turn(turn)
+
+                if (new_score == BIG_POSITIVE):
+                    return pos
 
                 #Always pick best score to be max from all children
                 if (new_score > best_score):

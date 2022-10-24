@@ -49,7 +49,6 @@ def play_connect_four(board, turn):
                 if (turn == HUMAN):
                     
                     playerPosition = int(event.pos[0]/SQUARE_SIZE)
-                    print(playerPosition)
 
                     if (check_valid(board, playerPosition)):
                         board, row = place_disc(board, rows, playerPosition, turn)
