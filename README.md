@@ -8,7 +8,7 @@ Project for the course Datastructures and Algorithms from University of Helsinki
 
 [Määrittelydokumentti](/Dokumentit/M%C3%A4%C3%A4rittelydokumentti.md)
 
-[Toteutusdokumentti](/Dokumentit/Toteutusraportti.md)
+[Toteutusraportti](/Dokumentit/Toteutusraportti.md)
 
 [Testausdokumentti](/Dokumentit/Testausdokumentti.md)
 
