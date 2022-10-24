@@ -1,6 +1,16 @@
 import numpy as np
 import pygame
 
+'''
+Logic for connect-four board actions. Includes:
+-Drawing the board on given Pygame window
+-Checking whether a disc can be dropped on the board
+-Placing a disc on the board
+-Changing the turn
+-Cheking draw and winning condition
+'''
+
+#Initialize constants for drawing the board
 OFF_WHITE = (248, 240, 227)
 BLACK = (24,25,28)
 SQUARE_SIZE = 100

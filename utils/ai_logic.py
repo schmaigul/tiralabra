@@ -13,6 +13,11 @@ AI = 2
 ROWS = 6
 COLUMNS = 7
 
+
+'''
+All classes that are used by the AI.
+'''
+
 def evaluate_position(turn, window):
         """
         Function to evaluate given 4*1 window from the board
@@ -22,16 +27,17 @@ def evaluate_position(turn, window):
         #If four own discs in a row
         if window.count(turn) == 4:
             value += 50
-        #If there are 3 own discs and one empty
+        #3 own discs and 1 empty
         if window.count(turn) == 3 and window.count(0) == 1:
             value += 10
+        #2 own discs and 1 empty
         if window.count(turn) == 2 and window.count(0) == 2:
             value += 5
         
+        #Check for opponent score
         opponent = turn%2+1
         if window.count(opponent) == 4:
             value -= 50
-        #If there are 3 own discs and one empty
         if window.count(opponent) == 3 and window.count(0) == 1:
             value -= 10
         if window.count(opponent) == 2 and window.count(0) == 2:
@@ -90,6 +96,7 @@ def make_children(board):
     columns = board.shape[1]
     middle = columns//2
 
+    #Choose randomly from which side from the middle the children will be generated
     choice = random.choice([1,2])
 
     #Check if middle is a valid position
@@ -97,7 +104,6 @@ def make_children(board):
             children.append(middle)
 
     #Start iterating from the middle alternating to both sides
-
     if (choice == 1):
         #Check first left side, then right
         for i in range(1, middle+1, 1):
@@ -129,26 +135,34 @@ def maximizing(board, turn, alpha, beta, depth):
         if (check_draw(board)):
             return (0, None)
 
+        #Call evaluation at bottom depth
         if (depth == 0):
             return (scores(board, turn) , None)
 
+        #Initialize children and start minimax with the worst score
         value = BIG_NEGATIVE
         children = make_children(board)
         chosen_position = children[0]
 
         for position in children:
 
+            #Place a disc on the board, and change turn
             board, row = place_disc(board, board.shape[0], position, turn)
             turn = change_turn(turn)
 
+            #Pass the new board to the minimizing function
             new_score, new_position = minimizing(board, turn, alpha, beta, depth-1)
             
+            #Invert changes to the board
             turn = change_turn(turn)
             board[row][position] = 0
 
+            #Choose max score and the corresponding position in the board
             if new_score > value:
                 value = new_score
                 chosen_position = position
+
+            #Alpha beta-pruning
             if value >= beta:
                 break
             alpha = max(alpha, value)
@@ -172,24 +186,30 @@ def minimizing(board, turn, alpha, beta, depth):
         #Return negative score
         return (scores(board, turn)*(-1), None)
 
+    #Initialize children and start minimax with the worst score
     value = BIG_POSITIVE
     children = make_children(board)
     chosen_position = children[0]
 
     for position in children:
 
+        #Place a disc on the board, and change turn
         board, row = place_disc(board, board.shape[0], position, turn)
         turn = change_turn(turn)
-
+        
+        #Pass the new board to the maximizing function
         new_score, new_position = maximizing(board, turn, alpha, beta, depth-1)
 
+        #Invert changes to the board
         turn = change_turn(turn)
         board[row][position] = 0
 
+        #Choose min score and the corresponding position in the board
         if new_score < value:
             value = new_score
             chosen_position = position
 
+        #Alpha beta-pruning
         if value <= alpha:
             break
         beta = min(beta, value)
