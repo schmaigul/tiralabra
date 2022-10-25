@@ -1,8 +1,8 @@
-## Connect Four-game with AI
+# Connect Four-game with AI
 
 Project for the course Datastructures and Algorithms from University of Helsinki, 4 ECTS
 
-# Dokumentit 
+## Dokumentit 
 
 [Käyttöohje](/Dokumentit/K%C3%A4ytt%C3%B6ohje.md)
 
@@ -12,7 +12,7 @@ Project for the course Datastructures and Algorithms from University of Helsinki
 
 [Testausdokumentti](/Dokumentit/Testausdokumentti.md)
 
-# Viikkoraportit
+## Viikkoraportit
 
 [Viikkoraportti 1](/Dokumentit/Viikkoraportti1.md)
 
