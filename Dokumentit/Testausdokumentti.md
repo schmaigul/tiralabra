@@ -33,7 +33,7 @@ Testasin kuinka hyvin tekoälyt pelaavat toisiaan vastaan. Laitoin tekoälyt pel
 ![image](../pics/winning_rates_aivsai.png)
 
 ### Suorita alla oleva kaavio komennolla:
-python -m test.testing
+python -m test.performancetesting
 
 ## Suorituskykytestit kolmelle eri pelitilanteelle
 
